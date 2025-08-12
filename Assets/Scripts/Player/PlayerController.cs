@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour
     public float maxXLook;
     private float camCurXRot;
     public float lookSensitivity;
+    
+    [Header("Third Person")]
+    public Transform model;     // 플레이어의 자식 모델(고양이/다람쥐 프리팹)
+    public Animator animator;   // model에 붙은 Animator
+    public float rotateSpeed = 12f; // 모델이 바라보는 방향 회전 속도
+
 
     private Vector2 mouseDelta;
 
@@ -75,11 +81,15 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
+        Vector3 planar = new Vector3(dir.x, 0f, dir.z); // 수평 방향만
+
+        // 속도 적용(현재 방식 유지)
         dir *= moveSpeed;
         dir.y = rigidbody.velocity.y;
-
         rigidbody.velocity = dir;
+        
     }
+ 
 
     void CameraLook()
     {
