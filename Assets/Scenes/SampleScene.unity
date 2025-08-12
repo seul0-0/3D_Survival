@@ -680,7 +680,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1984,7 +1984,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2400,6 +2400,22 @@ PrefabInstance:
     - target: {fileID: 918619374896716188, guid: c05dd9ff5e4466c46b4c8780b80a1439, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 962256250238732426, guid: c05dd9ff5e4466c46b4c8780b80a1439, type: 3}
+      propertyPath: m_Size.x
+      value: 0.78144836
+      objectReference: {fileID: 0}
+    - target: {fileID: 962256250238732426, guid: c05dd9ff5e4466c46b4c8780b80a1439, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7120568
+      objectReference: {fileID: 0}
+    - target: {fileID: 962256250238732426, guid: c05dd9ff5e4466c46b4c8780b80a1439, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0054798126
+      objectReference: {fileID: 0}
+    - target: {fileID: 962256250238732426, guid: c05dd9ff5e4466c46b4c8780b80a1439, type: 3}
+      propertyPath: m_Center.y
+      value: 0.011072159
       objectReference: {fileID: 0}
     - target: {fileID: 2470851911015868097, guid: c05dd9ff5e4466c46b4c8780b80a1439, type: 3}
       propertyPath: m_Layer
