@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity;
     
     [Header("Third Person")]
-    public Transform model;     // 플레이어의 자식 모델(고양이/다람쥐 프리팹)
+    public Transform model;     // 플레이어의 자식 모델
     public Animator animator;   // model에 붙은 Animator
     public float rotateSpeed = 12f; // 모델이 바라보는 방향 회전 속도
     private float baseMoveSpeed;       // 원래 이동속도 저장
@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        Debug.Log(IsGrounded());
+        Debug.DrawRay(transform.position + (transform.forward * 0.2f) + (transform.up * 0.5f), Vector3.down, Color.red);
+
     }
 
     private void LateUpdate()
@@ -107,15 +110,16 @@ public class PlayerController : MonoBehaviour
     {
         Ray[] rays = new Ray[4]
         {
-            new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
-            new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
-            new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
-            new Ray(transform.position + (-transform.right * 0.2f) +(transform.up * 0.01f), Vector3.down)
+            new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.5f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.5f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.5f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.2f) +(transform.up * 0.5f), Vector3.down)
         };
+        
 
         for(int i = 0; i < rays.Length; i++)
         {
-            if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
+            if (Physics.Raycast(rays[i], 0.5f, groundLayerMask))
             {
                 return true;
             }
