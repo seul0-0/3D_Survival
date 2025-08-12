@@ -15,4 +15,24 @@ public class Player : MonoBehaviour
         controller = GetComponent<PlayerController>();
         condition = GetComponent<PlayerCondition>();
     }
+    
+    public void Heal(float amount)
+    {
+        condition?.Heal(amount);
+    }
+
+    public void RestoreHunger(float amount)
+    {
+        condition?.Eat(amount);
+    }
+
+    public void ApplySpeedBoost(float multiplier, float duration)
+    {
+        {
+            controller?.ApplySpeedBoost(multiplier, duration);   // ← 반드시 실제 호출로
+        }
+        
+    }
+
+
 }

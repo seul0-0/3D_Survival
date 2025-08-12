@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public Transform model;     // 플레이어의 자식 모델(고양이/다람쥐 프리팹)
     public Animator animator;   // model에 붙은 Animator
     public float rotateSpeed = 12f; // 모델이 바라보는 방향 회전 속도
+    private float baseMoveSpeed;       // 원래 이동속도 저장
+    private Coroutine speedRoutine;    // 중복 버프 정리용
 
 
     private Vector2 mouseDelta;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        baseMoveSpeed = moveSpeed;
     }
 
     void Start()
@@ -126,4 +129,28 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
     }
+    
+    public void ApplySpeedBoost(float multiplier, float duration)
+    {
+        if (speedRoutine != null)
+            StopCoroutine(speedRoutine);
+
+        speedRoutine = StartCoroutine(SpeedBoostRoutine(multiplier, duration));
+    }
+
+    private IEnumerator SpeedBoostRoutine(float multiplier, float duration)
+    {
+        moveSpeed = baseMoveSpeed * multiplier;
+        yield return new WaitForSeconds(duration);
+        moveSpeed = baseMoveSpeed;
+        speedRoutine = null;
+    }
+
+//씬 전환 시 깔끔하게 원복
+    private void OnDisable()
+    {
+        moveSpeed = baseMoveSpeed;
+        speedRoutine = null;
+    }
+    
 }
