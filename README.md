@@ -2,9 +2,14 @@
 
 ## 구현 목록
 
-- **기본 이동 및 점프** `Input System`, `Rigidbody ForceMode` (난이도 : ★★☆☆☆)  
-  - 플레이어 이동(WASD), 점프(Space) 구현  
+- **기본 이동 및 점프** `Input System`, `Rigidbody ForceMode` (난이도 : ★★☆☆☆)
+- - ![기본 이동](https://github.com/user-attachments/assets/03d1c425-f585-4b8a-b207-1bc4d6fc8866)
+  - 플레이어 이동(WASD), 점프(Space) 구현
+  - ![점프](https://github.com/user-attachments/assets/b09169c4-31f2-4585-aeb5-a6eb2621ab5d)
+
   - `Input System`을 사용하여 입력 처리, `Rigidbody`에 힘을 가해 물리 기반 이동 구현
+  
+
 
 - **체력바 UI** `UI` (난이도 : ★★☆☆☆)  
   - UI Canvas에 체력바 추가  
